@@ -1,0 +1,12 @@
+#mapContainer {
+    height: 500px;
+    width: 800px;
+    border:10px solid #eaeaea;
+}
+
+        .floatedTable {
+            float:left;
+        }
+        .inlineTable {
+            display: inline-block;
+        }

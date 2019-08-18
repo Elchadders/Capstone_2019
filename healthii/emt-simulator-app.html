@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+    <meta charset="UTF-9">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Metro, a sleek, intuitive, and powerful framework for faster and easier web development for Windows Metro Style.">
+    <meta name="keywords" content="HTML, CSS, JS, JavaScript, framework, metro, front-end, frontend, web development">
+    <meta name="author" content="Sergey Pimenov and Metro UI CSS contributors">
+
+    <link rel="shortcut icon" type="image/png" href="http://localhost/healthii/data/images/logo.png">
+
+    <title>Healthii EMT </title>
+
+    <link href="emt-simulator-app_files/metro_6.css" rel="stylesheet">
+    <link href="emt-simulator-app_files/metro-icons.css" rel="stylesheet">
+    <link href="emt-simulator-app_files/metro-responsive.css" rel="stylesheet">
+
+    <script src="emt-simulator-app_files/jquery-2.js"></script>
+    <script src="emt-simulator-app_files/metro_4.js"></script>
+	<script src="emt-simulator-app_files/location.js"></script>
+	
+	</head>
+	<body onload="getLocation()">
+	<h5 id='demo'>Location</h5>
+	<h2> Person to be assessed by EMT </h2>
+	
+	
+		
+		<table class="participantList">
+			<thead>
+				<tr>	
+					<td>Name</td>
+					<td style="padding:15px">Id</td>
+					<td style="padding:15px">Location</td>
+					<td style="padding:15px">Age</td>
+					<td style="padding:15px">Status</td>
+				
+				</tr>
+			</thead>
+			
+			<tbody id="participantListBody">
+			
+			<tr></tr>
+			
+		</table>
+	<script>
+	var x = document.getElementById("demo");
+		function getLocation() {
+		  if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(showPosition);
+		  } else {
+			x.innerHTML = "Geolocation is not supported by this browser.";
+		  }
+		}
+
+		function showPosition(position) {
+		  x.innerHTML = "Latitude: " + position.coords.latitude +
+		  "<br>Longitude: " + position.coords.longitude;
+		}
+	</script>
+
+</body></html>

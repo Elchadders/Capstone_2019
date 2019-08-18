@@ -1,0 +1,97 @@
+<!-- 
+
+1. Simulates persons/watches. Each person is a watch.
+2. Calculates whether arrhythmia is present in each person's ecg data.
+-->
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="Metro, a sleek, intuitive, and powerful framework for faster and easier web development for Windows Metro Style.">
+		<meta name="keywords" content="HTML, CSS, JS, JavaScript, framework, metro, front-end, frontend, web development">
+		<meta name="author" content="Sergey Pimenov and Metro UI CSS contributors">
+
+		<link rel="shortcut icon" type="image/png" href="http://localhost/healthii/data/images/logo.png">
+
+		<title>Healthii/Monitor Simulator App</title>	
+
+		<link href="monitor-simulator-app_files/metro_6.css" rel="stylesheet">
+		<link href="monitor-simulator-app_files/metro-icons.css" rel="stylesheet">
+		<link href="monitor-simulator-app_files/metro-responsive.css" rel="stylesheet">
+		<link href="data/css/Map.css" rel="stylesheet">
+
+		<script src="monitor-simulator-app_files/jquery-2.js"></script>
+		<script src="monitor-simulator-app_files/metro_4.js"></script>
+		<script src="monitor-simulator-app_files/location.js"></script>
+	</head>
+	
+	<body> 
+	
+
+			 
+		<h1>Healthii/Monitor Simulator App</h1>
+		        <div id="map">
+           <iframe id="google_map" width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.co.uk?output=embed"></iframe>﻿ 
+        </div>
+        
+        <script>
+            var c = function(pos){
+                var lat = pos.coords.latitude,
+                    long = pos.coords.longitude,
+                    coords = lat + ', ' + long;
+                
+                document.getElementById('google_map').setAttribute('src','https://maps.google.co.uk/?q=' + coords + '&z=60&output=embed');
+            }
+        document.getElementById('get_location').onload = function(){
+            navigator.geolocation.getCurrentPosition(c);
+            return false;
+        }
+        </script>
+		
+		<br><br>
+		
+		<h2> Participant List Section </h2>
+		
+		<table class="participantList">
+			<thead>
+				<tr>	
+					<td>Name</td>
+					<td style="padding:15px">Id</td>
+					<td style="padding:15px">Location</td>
+					<td style="padding:15px">Age</td>
+					<td style="padding:15px">Status</td>
+					<td style="padding:15px">Assigned Emt</td>
+				</tr>
+			</thead>
+			
+			<tbody id="participantListBody">
+			
+			<tr></tr>
+			
+		</table>
+							
+		<br><br>
+		
+		<h2> Emt List </h2>
+		
+		<table class="emtList">
+			<thead>
+				<tr>	
+					<td>Name</td>
+					<td style="padding:15px">Id</td>
+					<td style="padding:15px">Location</td>
+					<td style="padding:15px">Status</td>
+				</tr>
+			</thead>
+			
+			<tbody id="emtListBody">
+			
+			<tr></tr>
+			
+		</table>
+
+
+	
+</body></html>

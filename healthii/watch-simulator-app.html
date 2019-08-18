@@ -1,0 +1,107 @@
+<!-- 
+
+1. Simulates persons/watches. Each person is a watch.
+2. Calculates whether arrhythmia is present in each person's ecg data.
+-->
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+		<meta name="description" content="Metro, a sleek, intuitive, and powerful framework for faster and easier web development for Windows Metro Style.">
+		<meta name="keywords" content="HTML, CSS, JS, JavaScript, framework, metro, front-end, frontend, web development">
+		<meta name="author" content="Sergey Pimenov and Metro UI CSS contributors">
+
+		<link rel="shortcut icon" type="image/png" href="data/images/logo.png"/>
+
+		<title>Healthii/Watch Simulator App</title>	
+
+		<link href="data/css/metro_6.css" rel="stylesheet">
+		<link href="data/css/metro-icons.css" rel="stylesheet">
+		<link href="data/css/metro-responsive.css" rel="stylesheet">
+
+		<script src="data/js/jquery-2.1.3.min.js"></script>
+		<script src="data/js/metro_4.js"></script>
+		<script src="data/js/location.js"></script>
+	</head>
+	
+	<body onload="getLocation()">
+		<h5 id='demo'>Location</h5>
+	
+		
+		<script>
+			//loads persons/watches.
+			$.ajax
+			(
+				{
+					type: 'GET',
+
+					url: 'data/phps/list persons.php',
+
+					dataType: 'json',
+
+					success: function ( response ) 
+					{
+						var tableBody = $("#participantListBody");
+						
+						$.each(response, function() {
+							tableBody.append('<tr>');
+							tableBody.append($("<td/ style = 'text-align:left;'>").val(this.personName).text(this.personName));
+							tableBody.append($("<td/ style = 'text-align:left; padding:15px;'>").val(this.personId).text(this.personId));
+							tableBody.append($("<td/ style = 'text-align:left; padding:15px;'>").val(this.personLocation).text(this.personLocation));
+							tableBody.append($("<td/ style = 'text-align:left; padding:15px;'>").val(this.personAge).text(this.personAge));
+							tableBody.append($("<td/ style = 'text-align:left; padding:15px;'>").val(this.personStatus).text(this.personStatus));
+							
+							tableBody.append('</tr>');
+						});	
+					},
+					error: function (data) 
+					{
+					}
+				}
+			);
+			
+		var x = document.getElementById("demo");
+		function getLocation() {
+		  if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(showPosition);
+		  } else {
+			x.innerHTML = "Geolocation is not supported by this browser.";
+		  }
+		}
+
+		function showPosition(position) {
+		  x.innerHTML = "Latitude: " + position.coords.latitude +
+		  "<br>Longitude: " + position.coords.longitude;
+		}
+
+		</script>
+		
+		<h1>Healthii/Watch Simulator App</h1>
+		
+		</br></br>
+		
+		<h2> Participant List Section </h2>
+		
+		<table class="participantList">
+			<thead>
+				<tr>	
+					<td>Name</td>
+					<td style='padding:15px'>Id</td>
+					<td style='padding:15px'>Location</td>
+					<td style='padding:15px'>Age</td>
+					<td style='padding:15px'>Status</td>
+				</tr>
+			</thead>
+			
+			<tbody id = "participantListBody">
+			
+			</tbody>
+		</table>
+							
+		</br></br>
+		
+	</body>
+</html>
